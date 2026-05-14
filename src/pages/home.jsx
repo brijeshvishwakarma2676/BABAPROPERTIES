@@ -345,7 +345,7 @@ const HomePage = () => (
       </div>
 
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float"
+        className="absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float"
         style={{ opacity: 0.5 }}
       >
         <p className="font-inter text-[9px] text-white/60 tracking-widest uppercase">

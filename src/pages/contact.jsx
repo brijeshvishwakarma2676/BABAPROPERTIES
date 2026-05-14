@@ -309,36 +309,25 @@ const ContactPage = () => {
                 </div>
               </a>
 
-              {/* Map Placeholder */}
+              {/* Real Map */}
               <div className="premium-card overflow-hidden">
-                <div
-                  className="flex items-center justify-center"
-                  style={{
-                    height: 160,
-                    background: "linear-gradient(135deg,#141008,#0D0A06)",
-                  }}
-                >
-                  <div className="text-center">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="32"
-                      height="32"
-                      fill="none"
-                      stroke="rgba(200,155,60,0.4)"
-                      strokeWidth="1.5"
-                      className="mx-auto mb-3"
-                    >
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <p className="font-inter text-xs text-white/58">
-                      Serving Mira Bhayander · Mumbai · Thane · Palghar
-                    </p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="font-cinzel text-xs text-white/75 tracking-wider">
-                    Service Area Coverage
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.981831828551!2d72.8649856!3d19.3004897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b03b10f95229%3A0x9c952dad360eb6fd!2sBalasaheb%20Thakare%20Ground!5e0!3m2!1sen!2sin!4v1715655000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="320"
+                  style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Office Location"
+                ></iframe>
+                <div className="p-4 border-t border-white/5 bg-[#0D0A06]">
+                  <p className="font-cinzel text-[10px] text-gold tracking-widest uppercase mb-1">
+                    Registered Office
+                  </p>
+                  <p className="font-inter text-[11px] text-white/70 leading-relaxed">
+                    Balasaheb Thakare Ground Area, Indralok Phase 2,<br />
+                    Mira Road East, Maharashtra 401105
                   </p>
                 </div>
               </div>
