@@ -213,7 +213,6 @@ const ContactPage = () => {
                         Phone
                       </p>
                       <div className="flex flex-col gap-1">
-                        <a href="tel:+919769423820" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 97694 23820</a>
                         <a href="tel:+919769423830" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 97694 23830</a>
                       </div>
                     </div>
@@ -274,7 +273,7 @@ const ContactPage = () => {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/919769423820?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation%20for%20my%20society."
+                href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation%20for%20my%20society."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block premium-card p-6 border border-[#25D366]/18 hover:border-[#25D366]/45 transition-colors group no-underline"

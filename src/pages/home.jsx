@@ -159,7 +159,7 @@ const HomePage = () => (
                   Get Free Consultation
                 </Lnk>
                 <a
-                  href="https://wa.me/919769423820"
+                  href="https://wa.me/919769423830"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost"
@@ -665,9 +665,6 @@ const HomePage = () => (
             <Lnk to="/contact" className="btn-gold">
               Book Free Consultation
             </Lnk>
-            <a href="tel:+919769423820" className="btn-ghost">
-              +91 97694 23820
-            </a>
             <a href="tel:+919769423830" className="btn-ghost">
               +91 97694 23830
             </a>
@@ -685,7 +682,7 @@ const HomePage = () => (
         Consult Now
       </Lnk>
       <a
-        href="https://wa.me/919769423820"
+        href="https://wa.me/919769423830"
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 flex items-center justify-center gap-2 text-[#25D366] text-[10px] font-bold tracking-widest uppercase border border-[#25D366]"

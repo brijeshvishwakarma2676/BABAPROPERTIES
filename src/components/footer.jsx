@@ -3,7 +3,7 @@ import { Link } from './shared';
 
 const WhatsAppBtn = () => (
   <a
-    href="https://wa.me/919769423820?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
+    href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
     target="_blank" rel="noopener noreferrer"
     title="Chat on WhatsApp"
     className="animate-glow floating-wa-btn"
@@ -86,7 +86,6 @@ const Footer = () => {
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Phone</p>
                     <div className="flex flex-col gap-1">
-                      <a href="tel:+919769423820" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23820</a>
                       <a href="tel:+919769423830" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23830</a>
                     </div>
                   </div>

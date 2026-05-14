@@ -145,7 +145,6 @@ export const PageCTA = ({ headline = 'Ready to Start Your Redevelopment Journey?
           <p className="font-inter text-base text-white/75 my-8 leading-relaxed">{sub}</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-gold">Book Free Consultation</Link>
-            <a href="tel:+919769423820" className="btn-ghost">+91 97694 23820</a>
             <a href="tel:+919769423830" className="btn-ghost">+91 97694 23830</a>
           </div>
         </FadeUp>

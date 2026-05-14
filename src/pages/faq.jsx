@@ -128,7 +128,7 @@ const FAQPage = () => {
                   Book Free Consultation
                 </Lk7>
                 <a
-                  href="https://wa.me/919769423820"
+                  href="https://wa.me/919769423830"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost"
