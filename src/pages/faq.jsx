@@ -120,7 +120,7 @@ const FAQPage = () => {
               <Gr7 center className="mb-6" />
               <p className="font-inter text-sm text-white/75 leading-relaxed mb-8 max-w-md mx-auto">
                 Aapke specific society ke liye personalized answers chahiye?
-                Deepak Vishwakarma se directly baat karein — free consultation
+                Virendra Vishwakarma se directly baat karein — free consultation
                 mein.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">

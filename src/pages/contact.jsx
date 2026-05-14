@@ -71,7 +71,7 @@ const ContactPage = () => {
                       Message Received!
                     </h3>
                     <p className="font-inter text-sm text-white/70 leading-relaxed max-w-sm mx-auto">
-                      Thank you for reaching out. Deepak Vishwakarma will
+                      Thank you for reaching out. Virendra Vishwakarma will
                       personally get back to you within 24 hours.
                     </p>
                   </div>

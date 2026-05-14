@@ -37,7 +37,7 @@ const AboutPage = () => (
               <p>
                 Having witnessed societies make costly mistakes — accepting
                 unfair terms, choosing wrong builders, missing critical legal
-                protections — our founder Deepak Vishwakarma decided to bridge
+                protections — our founder Virendra Vishwakarma decided to bridge
                 the gap between societies and expert guidance.
               </p>
               <p>
@@ -182,7 +182,7 @@ const AboutPage = () => (
                     </span>
                   </div>
                   <p className="font-cinzel text-base text-white/95 tracking-wider">
-                    Deepak Vishwakarma
+                    Virendra Vishwakarma
                   </p>
                   <p className="font-inter text-[11px] text-gold/75 mt-1 tracking-widest uppercase">
                     Founder & Consultant
@@ -238,7 +238,7 @@ const AboutPage = () => (
           <Fu delay={130} className="order-2">
             <p className="section-label mb-4">Founder</p>
             <h2 className="font-cinzel text-3xl md:text-4xl font-bold text-white mb-2">
-              Deepak Vishwakarma
+              Virendra Vishwakarma
             </h2>
             <p className="font-inter text-sm text-gold/85 mb-6 tracking-wide">
               Founder & Chief Redevelopment Consultant
@@ -247,7 +247,7 @@ const AboutPage = () => (
             <div className="space-y-4 font-inter text-sm text-white/75 leading-relaxed mb-8">
               <p>
                 With 15+ years of experience in real estate advisory, legal
-                guidance, and society management, Deepak Vishwakarma brings
+                guidance, and society management, Virendra Vishwakarma brings
                 unparalleled expertise to every redevelopment consultation.
               </p>
               <p>
@@ -264,7 +264,7 @@ const AboutPage = () => (
               </p>
             </div>
             <Lk2 to="/contact" className="btn-gold">
-              Consult With Deepak
+              Consult With Virendra
             </Lk2>
           </Fu>
         </div>
@@ -350,7 +350,7 @@ const AboutPage = () => (
 
     <Cta
       headline="Partner With the Experts Your Society Deserves"
-      sub="Book a no-obligation consultation with Deepak Vishwakarma and get expert clarity on your redevelopment journey."
+      sub="Book a no-obligation consultation with Virendra Vishwakarma and get expert clarity on your redevelopment journey."
     />
   </div>
 );

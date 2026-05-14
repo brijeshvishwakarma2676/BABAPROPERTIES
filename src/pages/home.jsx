@@ -281,7 +281,7 @@ const HomePage = () => (
                   >
                     <img 
                       src="/uploads/file (1).enc" 
-                      alt="Deepak Vishwakarma" 
+                      alt="Virendra Vishwakarma" 
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         e.target.style.display = 'none';
@@ -293,7 +293,7 @@ const HomePage = () => (
                     </span>
                   </div>
                   <p className="font-cinzel text-base text-white/95 tracking-wider">
-                    Deepak Vishwakarma
+                    Virendra Vishwakarma
                   </p>
                   <p className="font-inter text-[11px] text-gold/75 mt-1 tracking-widest uppercase">
                     Founder & Consultant

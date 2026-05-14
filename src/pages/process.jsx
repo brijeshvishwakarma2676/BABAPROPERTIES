@@ -2,15 +2,12 @@ import React from 'react';
 import { FadeUp as Fu4, SectionTitle as St4, PageHero as Ph4, GoldRule as Gr4, Link as Lk4, PageCTA as Cta4 } from '../components/shared';
 
 const PROCESS_STEPS = [
-  { n:'01', t:'Initial Society Consultation', d:'We begin with a comprehensive meeting with your committee to understand the society\'s needs, member expectations, and redevelopment aspirations. This sets the foundation for everything that follows.', dur:'1–2 Weeks' },
-  { n:'02', t:'Feasibility Study', d:'Technical and financial feasibility analysis: plot size, FSI potential, TDR calculation, projected corpus, area increase per flat, and overall project viability assessment.', dur:'2–4 Weeks' },
-  { n:'03', t:'Builder Shortlisting', d:'We identify and shortlist reputed builders based on financial health, RERA ratings, past project delivery, and suitability for your society\'s scale and location.', dur:'3–4 Weeks' },
-  { n:'04', t:'Technical Evaluation', d:'Detailed structural survey of the existing building, soil testing, technical drawings review, and construction quality benchmarking against the developer\'s proposals.', dur:'2–3 Weeks' },
-  { n:'05', t:'Agreement Drafting & Review', d:'Expert review of the Development Agreement — every clause scrutinized for corpus protection, transit rent security, possession timelines, penalty clauses, and member safeguards.', dur:'3–5 Weeks' },
-  { n:'06', t:'Legal Verification', d:'Comprehensive legal due diligence: title search, encumbrance check, RERA verification, society NOCs, government approvals, and all statutory compliance review.', dur:'2–4 Weeks' },
-  { n:'07', t:'Society Coordination & Consent', d:'Managing member meetings, addressing individual concerns, obtaining the required 51%+ special resolution, and ensuring full society consensus before finalizing the builder.', dur:'4–8 Weeks' },
-  { n:'08', t:'Construction Monitoring', d:'Stage-wise inspections, quality audits, timeline tracking, resolving builder-society disputes, and ensuring agreed specifications are maintained throughout the build.', dur:'Ongoing' },
-  { n:'09', t:'Project Delivery & Possession', d:'Final defect inspection, OC documentation verification, flat allocation oversight, member-wise possession scheduling, and complete handover support until every family is settled.', dur:'Final Phase' },
+  { n:'01', t:'SOCIETY UNDERSTANDING', d:'We understand the society\'s requirements, expectations, concerns and redevelopment goals through detailed discussions.', dur:'Step 1' },
+  { n:'02', t:'FEASIBILITY & PLANNING', d:'We analyse project feasibility, FSI potential, development options and create the right redevelopment strategy.', dur:'Step 2' },
+  { n:'03', t:'BUILDER EVALUATION', d:'We evaluate and compare developers based on track record, financial strength, proposal terms and project capability.', dur:'Step 3' },
+  { n:'04', t:'DOCUMENTATION & COORDINATION', d:'We handle meetings, society coordination, approvals and all necessary documentation through proper liaison support.', dur:'Step 4' },
+  { n:'05', t:'PMC & EXECUTION SUPPORT', d:'We provide PMC support, monitor progress, coordinate with all stakeholders and ensure process-driven execution.', dur:'Step 5' },
+  { n:'06', t:'COMPLETION & TRANSITION SUPPORT', d:'We assist societies towards smooth project completion, handover and transition to their new homes.', dur:'Step 6' },
 ];
 
 const ProcessPage = () => (
@@ -58,10 +55,10 @@ const ProcessPage = () => (
         <St4 label="Our Principles" title="How We Protect Your Society" center />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { t:'Transparency First', d:'Every decision is communicated clearly. No hidden processes, no surprises for members.' },
-            { t:'Member-Only Mandate', d:'We work exclusively for the society — never for the builder. Zero conflict of interest.' },
-            { t:'Legal Safeguards', d:'Every document, every clause, every agreement is reviewed for maximum member protection.' },
-            { t:'Ongoing Support', d:'We stay engaged until every member receives possession. Our job ends at handover, not signing.' },
+            { t:'TRANSPARENCY', d:'Clear processes and open communication.' },
+            { t:'PROFESSIONALISM', d:'Expert guidance at every step of redevelopment.' },
+            { t:'COMMITMENT', d:'Dedicated to society\'s best interests.' },
+            { t:'INTEGRITY', d:'Ethical approach with complete accountability.' },
           ].map((p,i) => (
             <Fu4 key={i} delay={i*80}>
               <div className="premium-card p-7 h-full text-center">
