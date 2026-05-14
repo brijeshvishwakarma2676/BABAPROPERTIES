@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useRouter } from './shared';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -34,14 +35,8 @@ const Navbar = () => {
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10 flex items-center justify-between h-[72px]">
 
         {/* Logo */}
-        <a href="#/" className="flex items-center gap-3 group no-underline">
-          <div className="w-9 h-9 flex items-center justify-center border border-[rgba(200,155,60,0.5)] group-hover:border-gold transition-colors duration-300">
-            <span className="font-cinzel font-black text-gold text-lg leading-none">B</span>
-          </div>
-          <div>
-            <div className="font-cinzel font-black text-gold tracking-[0.32em] text-[15px] leading-none">BABA</div>
-            <div className="font-cinzel text-[8px] tracking-[0.55em] text-white/70 leading-none mt-0.5">PROPERTIES</div>
-          </div>
+        <a href="#/" className="flex items-center group no-underline relative z-[60]">
+          <Logo layout="horizontal" className="group-hover:opacity-90 transition-opacity" />
         </a>
 
         {/* Desktop nav */}

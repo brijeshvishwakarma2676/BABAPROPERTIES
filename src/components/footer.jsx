@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from './shared';
+import Logo from './Logo';
 
 const WhatsAppBtn = () => (
   <a
@@ -31,10 +32,8 @@ const Footer = () => {
 
               {/* Brand */}
               <div>
-                <div className="mb-7">
-                  <div className="font-cinzel font-black text-2xl tracking-[0.38em] text-gold leading-none">BABA</div>
-                  <div className="font-cinzel text-[9px] tracking-[0.6em] text-white/65 mt-0.5 mb-1">PROPERTIES</div>
-                  <div className="section-label text-[8px] tracking-[0.3em]" style={{ color:'rgba(200,155,60,0.5)' }}>Redevelopment & PMC Services</div>
+                <div className="mb-7 flex items-start -ml-2">
+                  <Logo layout="vertical" />
                 </div>
                 <p className="font-inter text-sm text-white/68 leading-relaxed mb-8">
                   Trusted redevelopment consultancy for housing societies across the Mumbai Metropolitan Region.
