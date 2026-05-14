@@ -25,9 +25,9 @@ const Navbar = () => {
     ['/contact', 'Contact'],
   ];
 
-  const bar = scrolled
+  const bar = (scrolled || open)
     ? 'bg-[#0A0A0A]/97 backdrop-blur-xl border-b border-[rgba(200,155,60,0.14)] shadow-[0_4px_40px_rgba(0,0,0,0.7)]'
-    : 'bg-transparent';
+    : 'bg-[#0A0A0A]/40 backdrop-blur-md';
 
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${bar}`}>
