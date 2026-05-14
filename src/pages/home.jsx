@@ -159,7 +159,7 @@ const HomePage = () => (
                   Get Free Consultation
                 </Lnk>
                 <a
-                  href="https://wa.me/919769423830"
+                  href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost"
@@ -682,7 +682,7 @@ const HomePage = () => (
         Consult Now
       </Lnk>
       <a
-        href="https://wa.me/919769423830"
+        href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 flex items-center justify-center gap-2 text-[#25D366] text-[10px] font-bold tracking-widest uppercase border border-[#25D366]"
