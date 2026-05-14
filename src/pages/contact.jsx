@@ -327,7 +327,7 @@ const ContactPage = () => {
                   </p>
                   <p className="font-inter text-[11px] text-white/70 leading-relaxed">
                     Balasaheb Thakare Ground Area, Indralok Phase 2,<br />
-                    Mira Road East, Maharashtra 401105
+                    Bhayandar East, Maharashtra 401105
                   </p>
                 </div>
               </div>
