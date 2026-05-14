@@ -276,9 +276,19 @@ const HomePage = () => (
                       alignItems: "center",
                       justifyContent: "center",
                       marginBottom: 16,
+                      overflow: "hidden"
                     }}
                   >
-                    <span className="font-cinzel text-3xl font-black text-gold">
+                    <img 
+                      src="/uploads/file (1).enc" 
+                      alt="Deepak Vishwakarma" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <span className="font-cinzel text-3xl font-black text-gold" style={{ display: 'none' }}>
                       DV
                     </span>
                   </div>
