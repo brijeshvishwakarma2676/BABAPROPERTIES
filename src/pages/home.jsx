@@ -668,6 +668,9 @@ const HomePage = () => (
             <a href="tel:+919769423820" className="btn-ghost">
               +91 97694 23820
             </a>
+            <a href="tel:+919769423830" className="btn-ghost">
+              +91 97694 23830
+            </a>
           </div>
         </FU>
       </div>

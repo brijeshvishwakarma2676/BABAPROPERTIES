@@ -195,10 +195,7 @@ const ContactPage = () => {
               <div className="premium-card p-7">
                 <p className="section-label mb-5">Direct Contact</p>
                 <div className="space-y-5">
-                  <a
-                    href="tel:+919769423820"
-                    className="flex items-start gap-4 group no-underline"
-                  >
+                  <div className="flex items-start gap-4 group">
                     <div className="w-10 h-10 border border-[rgba(200,155,60,0.22)] flex items-center justify-center flex-shrink-0 text-gold group-hover:bg-[rgba(200,155,60,0.08)] transition-colors">
                       <svg
                         viewBox="0 0 24 24"
@@ -215,11 +212,12 @@ const ContactPage = () => {
                       <p className="font-inter text-[10px] text-white/58 uppercase tracking-widest mb-1">
                         Phone
                       </p>
-                      <p className="font-inter font-semibold text-white group-hover:text-gold transition-colors">
-                        +91 97694 23820
-                      </p>
+                      <div className="flex flex-col gap-1">
+                        <a href="tel:+919769423820" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 97694 23820</a>
+                        <a href="tel:+919769423830" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 97694 23830</a>
+                      </div>
                     </div>
-                  </a>
+                  </div>
                   <a
                     href="mailto:babaproperties188@gmail.com"
                     className="flex items-start gap-4 group no-underline"

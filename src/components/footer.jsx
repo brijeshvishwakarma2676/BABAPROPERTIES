@@ -85,7 +85,10 @@ const Footer = () => {
                 <div className="space-y-5">
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Phone</p>
-                    <a href="tel:+919769423820" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23820</a>
+                    <div className="flex flex-col gap-1">
+                      <a href="tel:+919769423820" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23820</a>
+                      <a href="tel:+919769423830" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23830</a>
+                    </div>
                   </div>
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Email</p>
