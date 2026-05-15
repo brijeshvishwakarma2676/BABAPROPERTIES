@@ -117,6 +117,7 @@ const Navbar = () => {
   useEffect(() => {
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
+    const navBar = document.querySelector('.navbar-inner');
     
     const applyBlur = (el, blurVal) => {
       if (el) {
@@ -128,18 +129,21 @@ const Navbar = () => {
 
     if (open) {
       document.body.style.overflow = 'hidden';
-      applyBlur(main, 8);
-      applyBlur(footer, 8);
+      applyBlur(main, 10);
+      applyBlur(footer, 10);
+      applyBlur(navBar, 10);
     } else {
       document.body.style.overflow = '';
       applyBlur(main, null);
       applyBlur(footer, null);
+      applyBlur(navBar, null);
     }
     
     return () => {
       document.body.style.overflow = '';
       applyBlur(main, null);
       applyBlur(footer, null);
+      applyBlur(navBar, null);
     };
   }, [open]);
 
@@ -166,67 +170,69 @@ const Navbar = () => {
     : { background: "var(--nav-bg)" };
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${bar}`}
-      style={barStyle}
-    >
-      <div className="max-w-[1380px] mx-auto px-5 lg:px-10 flex items-center justify-between h-[72px]">
-        {/* Logo */}
-        <a
-          href="#/"
-          className="flex items-center group no-underline relative z-[60]"
-        >
-          <Logo
-            layout="horizontal"
-            className="group-hover:opacity-90 transition-opacity"
-          />
-        </a>
-
-        {/* Desktop nav */}
-        <nav className="hidden xl:flex items-center gap-8">
-          {links.map(([path, label, end]) => (
-            <NavLink
-              key={path}
-              to={path}
-              end={end}
-              className={({ isActive }) =>
-                "font-inter text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 relative pb-1 " +
-                (isActive
-                  ? "text-gold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold"
-                  : "text-white/75 hover:text-gold")
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="hidden xl:flex items-center gap-8">
-          <ClassicToggle theme={theme} toggleTheme={toggleTheme} />
-          <a href="#/contact" className="btn-gold py-2.5 px-6 text-[10px] font-bold tracking-widest">
-            Free Consultation
-          </a>
-        </div>
-
-        {/* Mobile Toggle */}
-        <div className="xl:hidden flex items-center gap-5">
-          <ClassicToggle theme={theme} toggleTheme={toggleTheme} />
-
-          <button
-            className="flex flex-col items-center justify-center gap-[5.5px] w-8 h-8"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${bar}`}
+        style={barStyle}
+      >
+        <div className="max-w-[1380px] mx-auto px-5 lg:px-10 flex items-center justify-between h-[72px] navbar-inner">
+          {/* Logo */}
+          <a
+            href="#/"
+            className="flex items-center group no-underline relative z-[60]"
           >
-            <span className={`w-6 h-[1.5px] transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
-            <span className={`w-6 h-[1.5px] transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
-            <span className={`w-4 h-[1.5px] self-end transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
-          </button>
-        </div>
-      </div>
+            <Logo
+              layout="horizontal"
+              className="group-hover:opacity-90 transition-opacity"
+            />
+          </a>
 
-      {/* Mobile Sidebar Menu Overlay */}
+          {/* Desktop nav */}
+          <nav className="hidden xl:flex items-center gap-8">
+            {links.map(([path, label, end]) => (
+              <NavLink
+                key={path}
+                to={path}
+                end={end}
+                className={({ isActive }) =>
+                  "font-inter text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 relative pb-1 " +
+                  (isActive
+                    ? "text-gold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold"
+                    : "text-white/75 hover:text-gold")
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="hidden xl:flex items-center gap-8">
+            <ClassicToggle theme={theme} toggleTheme={toggleTheme} />
+            <a href="#/contact" className="btn-gold py-2.5 px-6 text-[10px] font-bold tracking-widest">
+              Free Consultation
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <div className="xl:hidden flex items-center gap-5">
+            <ClassicToggle theme={theme} toggleTheme={toggleTheme} />
+
+            <button
+              className="flex flex-col items-center justify-center gap-[5.5px] w-8 h-8"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+            >
+              <span className={`w-6 h-[1.5px] transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
+              <span className={`w-6 h-[1.5px] transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
+              <span className={`w-4 h-[1.5px] self-end transition-all duration-300 ${theme === "light" ? "bg-black" : "bg-white/80"}`} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Sidebar Menu Overlay - Removed darkness, kept only blur */}
       <div
-        className={`fixed inset-0 bg-black/70 backdrop-blur-xl z-[100] transition-opacity duration-500 xl:hidden ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 bg-black/30 backdrop-blur-xl z-[100] transition-opacity duration-500 xl:hidden ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         onClick={() => setOpen(false)}
       />
 
@@ -236,7 +242,7 @@ const Navbar = () => {
         style={{
           background: "var(--nav-bg-solid)",
           borderRight: "1px solid rgba(200,155,60,0.12)",
-          boxShadow: open ? "20px 0 50px rgba(0,0,0,0.5)" : "none"
+          boxShadow: open ? "40px 0 80px rgba(0,0,0,0.4)" : "none"
         }}
       >
         <div className="flex flex-col h-full">
@@ -245,9 +251,9 @@ const Navbar = () => {
             <Logo layout="horizontal" className="scale-75 origin-left" />
             <button 
               onClick={() => setOpen(false)}
-              className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-gold transition-colors"
+              className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-gold transition-colors"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
+              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
 
@@ -269,14 +275,14 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="p-6 border-t border-white/10 bg-black/5">
+          <div className="p-6 pb-12 border-t border-white/10 bg-black/5">
             <div className="mb-8">
               <ClassicToggle theme={theme} toggleTheme={toggleTheme} showLabel />
             </div>
 
             <a
               href="#/contact"
-              className="btn-gold w-full justify-center text-[11px] py-4 block text-center font-bold tracking-[0.2em] uppercase mb-4 shadow-lg shadow-gold/10"
+              className="btn-gold w-full justify-center text-[11px] py-4 block text-center font-bold tracking-[0.2em] uppercase mb-5 shadow-lg shadow-gold/10"
             >
               Free Consultation
             </a>
@@ -287,7 +293,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 };
 
