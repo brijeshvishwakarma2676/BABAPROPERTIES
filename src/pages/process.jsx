@@ -24,7 +24,7 @@ const ProcessPage = () => (
               {/* Number col */}
               <div className="relative flex flex-col items-center flex-shrink-0">
                 <div className="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center flex-shrink-0 relative z-10"
-                  style={{ background:'#0D0A07', boxShadow:'0 0 16px rgba(200,155,60,0.12)' }}>
+                  style={{ background:'var(--bg-section)', boxShadow:'0 0 16px rgba(200,155,60,0.12)' }}>
                   <span className="font-cinzel text-sm font-bold text-gold">{s.n}</span>
                 </div>
                 {i < PROCESS_STEPS.length-1 && (
@@ -50,7 +50,7 @@ const ProcessPage = () => (
     </section>
 
     {/* Key Principles */}
-    <section className="section-pad" style={{ background:'#0D0A07' }}>
+    <section className="section-pad" style={{ background:'var(--bg-section)' }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <St4 label="Our Principles" title="How We Protect Your Society" center />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

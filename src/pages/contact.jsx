@@ -312,13 +312,10 @@ const ContactPage = () => {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.981831828551!2d72.8649856!3d19.3004897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b03b10f95229%3A0x9c952dad360eb6fd!2sBalasaheb%20Thakare%20Ground!5e0!3m2!1sen!2sin!4v1715655000000!5m2!1sen!2sin"
                   width="100%"
                   height="320"
-                  style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  className="map-filter"
                   title="Office Location"
                 ></iframe>
-                <div className="p-4 border-t border-white/5 bg-[#0D0A06]">
+                <div className="p-4 border-t border-white/10" style={{ background: "var(--bg-section)" }}>
                   <p className="font-cinzel text-[10px] text-gold tracking-widest uppercase mb-1">
                     Registered Office
                   </p>

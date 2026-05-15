@@ -88,8 +88,7 @@ const HomePage = () => (
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(135deg,#0B0B0B 0%,#160C05 50%,#0B0B0B 100%)",
+          background: "var(--hero-bg)",
         }}
       />
       <div className="absolute inset-0 hero-pattern" />
@@ -97,8 +96,7 @@ const HomePage = () => (
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse 80% 70% at 60% 50%,transparent 25%,rgba(11,11,11,0.85) 100%)",
+          background: "var(--hero-overlay)",
         }}
       />
 
@@ -217,7 +215,7 @@ const HomePage = () => (
                 className="relative overflow-hidden"
                 style={{
                   paddingTop: "130%",
-                  background: "linear-gradient(160deg,#1B1008,#0E0A06)",
+                  background: "var(--founder-card-bg)",
                 }}
               >
                 {/* bg silhouette */}
@@ -292,7 +290,7 @@ const HomePage = () => (
                       DV
                     </span>
                   </div>
-                  <p className="font-cinzel text-base text-white/95 tracking-wider">
+                  <p className="font-cinzel text-base text-white/90 tracking-wider">
                     Virendra Vishwakarma
                   </p>
                   <p className="font-inter text-[11px] text-gold/75 mt-1 tracking-widest uppercase">
@@ -337,7 +335,7 @@ const HomePage = () => (
                 <div className="font-cinzel text-[10px] text-gold tracking-widest">
                   Expert Guidance
                 </div>
-                <div className="font-inter text-[9px] text-white/62">
+                <div className="font-inter text-[9px] text-white/60">
                   Better Decisions
                 </div>
               </div>
@@ -375,7 +373,7 @@ const HomePage = () => (
     {/* ── STATS BAND ──────────────────────────────────────────────────── */}
     <section
       className="py-14 border-y border-[rgba(200,155,60,0.1)]"
-      style={{ background: "#0D0A07" }}
+      style={{ background: "var(--bg-section)" }}
     >
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:divide-x divide-[rgba(200,155,60,0.14)]">
@@ -444,7 +442,7 @@ const HomePage = () => (
     </section>
 
     {/* ── SERVICES OVERVIEW ──────────────────────────────────────────── */}
-    <section className="section-pad" style={{ background: "#0D0A07" }}>
+    <section className="section-pad" style={{ background: "var(--bg-section)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <ST
           label="Our Services"
@@ -531,7 +529,7 @@ const HomePage = () => (
     </section>
 
     {/* ── 5 CHECKS ───────────────────────────────────────────────────── */}
-    <section className="section-pad" style={{ background: "#0D0A07" }}>
+    <section className="section-pad" style={{ background: "var(--bg-section)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <ST
           label="Decision Se Pehle"
@@ -635,7 +633,7 @@ const HomePage = () => (
     <section className="relative py-28 overflow-hidden">
       <div
         className="absolute inset-0 hero-pattern"
-        style={{ background: "#0D0A07" }}
+        style={{ background: "var(--bg-section)" }}
       />
       <div className="gold-ray" />
       <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
@@ -661,11 +659,11 @@ const HomePage = () => (
             <br />
             Free consultation ke liye aaj hi sampark karein.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Lnk to="/contact" className="btn-gold">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Lnk to="/contact" className="btn-gold w-full sm:w-auto text-center">
               Book Free Consultation
             </Lnk>
-            <a href="tel:+919769423830" className="btn-ghost">
+            <a href="tel:+919769423830" className="btn-ghost w-full sm:w-auto text-center">
               +91 97694 23830
             </a>
           </div>
@@ -673,23 +671,7 @@ const HomePage = () => (
       </div>
     </section>
 
-    {/* Mobile sticky */}
-    <div className="mobile-cta-bar">
-      <Lnk
-        to="/contact"
-        className="btn-gold flex-1 text-center text-[10px] py-3 justify-center block"
-      >
-        Consult Now
-      </Lnk>
-      <a
-        href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex-1 flex items-center justify-center gap-2 text-[#25D366] text-[10px] font-bold tracking-widest uppercase border border-[#25D366]"
-      >
-        WhatsApp
-      </a>
-    </div>
+
   </div>
 );
 

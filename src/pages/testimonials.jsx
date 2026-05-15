@@ -16,7 +16,7 @@ const TestimonialsPage = () => (
       subtitle="The trust and gratitude of thousands of families across Mumbai, Thane, Mira Bhayander & Palghar is our greatest achievement." />
 
     {/* Trust Stats */}
-    <section className="py-14 border-y border-gold/10" style={{ background:'#0D0A07' }}>
+    <section className="py-14 border-y border-gold/10" style={{ background:'var(--bg-section)' }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:divide-x divide-gold/12">
           {[['50','+','Societies Served'],['4000','+','Families Benefited'],['100','%','Client Satisfaction'],['15','+','Years of Trust']].map(([v,s,l],i) => (
@@ -62,7 +62,7 @@ const TestimonialsPage = () => (
     </section>
 
     {/* Video Placeholder Section */}
-    <section className="section-pad" style={{ background:'#0D0A07' }}>
+    <section className="section-pad" style={{ background:'var(--bg-section)' }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <St6 label="Video Testimonials" title="Hear It From Them Directly" center />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -73,7 +73,7 @@ const TestimonialsPage = () => (
           ].map((v,i) => (
             <Fu6 key={i} delay={i*90}>
               <div className="premium-card overflow-hidden group cursor-pointer">
-                <div className="relative flex items-center justify-center" style={{ height:180, background:'linear-gradient(135deg,#1A1008,#0D0A06)' }}>
+                <div className="relative flex items-center justify-center" style={{ height:180, background:'linear-gradient(135deg,#3F342E,var(--bg-section))' }}>
                   <div className="absolute inset-0 hero-pattern opacity-30" />
                   <div className="relative z-10 flex flex-col items-center gap-3">
                     <div className="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center group-hover:bg-gold/10 transition-colors duration-300"

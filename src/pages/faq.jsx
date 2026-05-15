@@ -50,12 +50,12 @@ const AccItem = ({ q, a, open, onToggle }) => (
       className="w-full flex items-center justify-between py-6 text-left gap-4 focus:outline-none"
     >
       <span
-        className={`font-cinzel text-base leading-snug transition-colors duration-300 ${open ? "text-gold" : "text-white/95 group-hover:text-white"}`}
+        className={`font-cinzel text-base leading-snug transition-colors duration-300 ${open ? "text-gold" : "text-white/90 group-hover:text-gold"}`}
       >
         {q}
       </span>
       <span
-        className={`flex-shrink-0 w-7 h-7 border flex items-center justify-center transition-all duration-300 ${open ? "border-gold bg-gold/10 text-gold rotate-45" : "border-white/15 text-white/70 group-hover:border-gold/40"}`}
+        className={`flex-shrink-0 w-7 h-7 border flex items-center justify-center transition-all duration-300 ${open ? "border-gold bg-gold/10 text-gold rotate-45" : "border-white/20 text-white/70 group-hover:border-gold/40"}`}
       >
         <svg viewBox="0 0 14 14" width="12" height="12" fill="currentColor">
           <path

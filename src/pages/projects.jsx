@@ -16,7 +16,7 @@ const ProjectsPage = () => (
       subtitle="Real redevelopments, real outcomes. Every project represents families whose futures we helped secure." />
 
     {/* Stats */}
-    <section className="py-14 border-y border-gold/10" style={{ background:'#0D0A07' }}>
+    <section className="py-14 border-y border-gold/10" style={{ background:'var(--bg-section)' }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:divide-x divide-gold/12">
           {[['50+','Societies Consulted'],['4000+','Families Benefited'],['28%','Avg. Extra Area Secured'],['₹9L+','Avg. Corpus Per Flat']].map(([v,l],i) => (
@@ -38,7 +38,7 @@ const ProjectsPage = () => (
             <Fu5 key={i} delay={i*60}>
               <div className="premium-card overflow-hidden group">
                 {/* Visual header */}
-                <div className="relative overflow-hidden" style={{ height:180, background:'linear-gradient(135deg,#1A1008,#0D0A06)' }}>
+                <div className="relative overflow-hidden" style={{ height:180, background:'var(--founder-card-bg)' }}>
                   <div className="absolute inset-0 hero-pattern opacity-40" />
                   {/* Building graphic */}
                   <div className="absolute inset-0 flex items-end justify-center pb-0" style={{ opacity:0.12 }}>
@@ -76,7 +76,7 @@ const ProjectsPage = () => (
                     {[['Type', p.type],['Units', p.units + ' Families'],['Benefit', p.benefit]].map(([k,v]) => (
                       <div key={k} className="flex justify-between items-center">
                         <span className="font-inter text-[11px] text-white/60 uppercase tracking-wider">{k}</span>
-                        <span className="font-inter text-[11px] text-white/85">{v}</span>
+                        <span className="font-inter text-[11px] text-white/90">{v}</span>
                       </div>
                     ))}
                   </div>

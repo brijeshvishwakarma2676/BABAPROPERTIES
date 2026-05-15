@@ -88,7 +88,7 @@ const ServicesPage = () => (
     </section>
 
     {/* Why Choose Full-Service */}
-    <section className="section-pad" style={{ background:'#0D0A07' }}>
+    <section className="section-pad" style={{ background:'var(--bg-section)' }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <St3 label="Our Approach" title="Why Full-Service Consultancy Matters"
           subtitle="Partial guidance leads to partial outcomes. Our end-to-end approach ensures nothing falls through the cracks." />

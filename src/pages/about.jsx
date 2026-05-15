@@ -99,7 +99,7 @@ const AboutPage = () => (
     </section>
 
     {/* ── MISSION & VALUES ─────────────────────────────────────────── */}
-    <section className="section-pad" style={{ background: "#0D0A07" }}>
+    <section className="section-pad" style={{ background: "var(--bg-section)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <Stl label="Our Purpose" title="Mission, Vision & Values" center />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -161,7 +161,7 @@ const AboutPage = () => (
                 <div
                   className="absolute inset-0 flex flex-col items-center justify-center"
                   style={{
-                    background: "linear-gradient(160deg,#1B1008,#0E0A06)",
+                    background: "var(--founder-card-bg)",
                   }}
                 >
                   <div
@@ -175,13 +175,23 @@ const AboutPage = () => (
                       alignItems: "center",
                       justifyContent: "center",
                       marginBottom: 16,
+                      overflow: "hidden",
                     }}
                   >
-                    <span className="font-cinzel text-3xl font-black text-gold">
+                    <img 
+                      src="/uploads/file (1).enc" 
+                      alt="Virendra Vishwakarma" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <span className="font-cinzel text-3xl font-black text-gold" style={{ display: 'none' }}>
                       DV
                     </span>
                   </div>
-                  <p className="font-cinzel text-base text-white/95 tracking-wider">
+                  <p className="font-cinzel text-base text-white/90 tracking-wider">
                     Virendra Vishwakarma
                   </p>
                   <p className="font-inter text-[11px] text-gold/75 mt-1 tracking-widest uppercase">
@@ -272,7 +282,7 @@ const AboutPage = () => (
     </section>
 
     {/* ── TIMELINE ─────────────────────────────────────────────────── */}
-    <section className="section-pad" style={{ background: "#0D0A07" }}>
+    <section className="section-pad" style={{ background: "var(--bg-section)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <Stl label="Our Journey" title="A Legacy of Trust" center />
         <div className="max-w-2xl mx-auto">
@@ -317,7 +327,7 @@ const AboutPage = () => (
                       height: 10,
                       borderRadius: "50%",
                       border: "2px solid #C89B3C",
-                      background: "#0D0A07",
+                      background: "var(--bg-section)",
                       flexShrink: 0,
                       boxShadow: "0 0 8px rgba(200,155,60,0.4)",
                     }}

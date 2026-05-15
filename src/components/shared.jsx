@@ -117,9 +117,10 @@ export const SectionTitle = ({ label, title, subtitle, center = true }) => (
 );
 
 export const PageHero = ({ label, title, subtitle }) => (
-  <section className="relative pt-44 pb-24 overflow-hidden hero-pattern">
+  <section className="relative pt-44 pb-24 overflow-hidden">
+    <div className="absolute inset-0" style={{ background: 'var(--hero-bg)' }} />
+    <div className="absolute inset-0 hero-pattern" />
     <div className="gold-ray" />
-    <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg,#0B0B0B 0%,#12090420%,#0D0A07 60%,#0B0B0B 100%)' }} />
     <div className="relative z-10 max-w-5xl mx-auto px-5 lg:px-10 text-center">
       <FadeUp>
         <p className="section-label mb-5">{label}</p>
@@ -135,7 +136,8 @@ export const PageCTA = ({ headline = 'Ready to Start Your Redevelopment Journey?
   const { page } = useRouter();
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 hero-pattern" style={{ background: '#0D0A07' }} />
+      <div className="absolute inset-0" style={{ background: 'var(--bg-section)' }} />
+      <div className="absolute inset-0 hero-pattern" />
       <div className="gold-ray" />
       <div className="relative z-10 max-w-2xl mx-auto px-5 text-center">
         <FadeUp>
