@@ -13,8 +13,8 @@ const AboutPage = () => (
   <div className="page-enter">
     <Ph
       label="About BABA Properties"
-      title="Your Trusted Redevelopment Partner"
-      subtitle="Founded with a mission to protect and empower housing societies through expert, unbiased guidance."
+      title="About"
+      subtitle="Your trusted redevelopment partner, founded with a mission to protect and empower housing societies."
     />
 
     {/* ── STORY ────────────────────────────────────────────────────── */}

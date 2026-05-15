@@ -486,6 +486,35 @@ const HomePage = () => (
       </div>
     </section>
 
+    {/* ── ADVISORY PREVIEW ───────────────────────────────────────────── */}
+    <section className="section-pad">
+      <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
+        <ST
+          label="Investment & Advisory"
+          title="Property Solutions Beyond Redevelopment"
+          subtitle="Leveraging our market expertise to help you find the right property, investment, or partnership."
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { t:'Liaisoning', d:'Professional government coordination for approvals & NOCs.' },
+            { t:'J.V. Proposals', d:'Facilitating strategic land & developer partnerships.' },
+            { t:'Outright Deals', d:'Buying & selling plots, bungalows & clear-title land.' },
+            { t:'New Inventory', d:'Direct access to premium RERA projects & pre-leased assets.' },
+          ].map((a,i) => (
+            <FU key={i} delay={i*60}>
+              <div className="premium-card p-6 border border-gold/10 hover:border-gold/30 transition-all">
+                <h3 className="font-cinzel text-xs font-bold text-gold tracking-widest uppercase mb-3">{a.t}</h3>
+                <p className="font-inter text-xs text-white/70 leading-relaxed">{a.d}</p>
+              </div>
+            </FU>
+          ))}
+        </div>
+        <FU className="text-center mt-10">
+          <Lnk to="/advisory" className="btn-ghost">Explore Advisory Solutions</Lnk>
+        </FU>
+      </div>
+    </section>
+
     {/* ── PROCESS OVERVIEW ───────────────────────────────────────────── */}
     <section className="section-pad">
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">

@@ -12,6 +12,7 @@ import ProjectsPage from './pages/projects';
 import TestimonialsPage from './pages/testimonials';
 import FAQPage from './pages/faq';
 import ContactPage from './pages/contact';
+import AdvisoryPage from './pages/advisory';
 
 const ScrollToTop = () => {
   const { page } = useRouter();
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/"             element={<HomePage />} />
           <Route path="/about"        element={<AboutPage />} />
           <Route path="/services"     element={<ServicesPage />} />
+          <Route path="/advisory"     element={<AdvisoryPage />} />
           <Route path="/process"      element={<ProcessPage />} />
           <Route path="/projects"     element={<ProjectsPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />

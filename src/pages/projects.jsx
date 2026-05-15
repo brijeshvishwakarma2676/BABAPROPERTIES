@@ -12,8 +12,8 @@ const PROJECTS = [
 
 const ProjectsPage = () => (
   <div className="page-enter">
-    <Ph5 label="Projects & Case Studies" title="Society Transformations"
-      subtitle="Real redevelopments, real outcomes. Every project represents families whose futures we helped secure." />
+    <Ph5 label="Case Studies" title="Projects"
+      subtitle="Real redevelopments, real outcomes. Every project represents families whose futures we helped secure through expert guidance." />
 
     {/* Stats */}
     <section className="py-14 border-y border-gold/10" style={{ background:'var(--bg-section)' }}>

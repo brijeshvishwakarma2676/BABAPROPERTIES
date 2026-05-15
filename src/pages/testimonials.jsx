@@ -12,8 +12,8 @@ const TESTIMONIALS_FULL = [
 
 const TestimonialsPage = () => (
   <div className="page-enter">
-    <Ph6 label="Testimonials" title="What Society Members Say"
-      subtitle="The trust and gratitude of thousands of families across Mumbai, Thane, Mira Bhayander & Palghar is our greatest achievement." />
+    <Ph6 label="Client Experiences" title="Testimonials"
+      subtitle="The trust and gratitude of thousands of families across Mumbai, Thane, MMR & Palghar is our greatest achievement." />
 
     {/* Trust Stats */}
     <section className="py-14 border-y border-gold/10" style={{ background:'var(--bg-section)' }}>

@@ -12,8 +12,8 @@ const PROCESS_STEPS = [
 
 const ProcessPage = () => (
   <div className="page-enter">
-    <Ph4 label="Redevelopment Process" title="9 Steps to Successful Redevelopment"
-      subtitle="A transparent, proven methodology designed to protect your society's interests at every stage — from consultation to possession." />
+    <Ph4 label="Our Methodology" title="Process"
+      subtitle="A transparent, proven 9-step methodology designed to protect your society's interests at every stage — from consultation to possession." />
 
     {/* Timeline */}
     <section className="section-pad">

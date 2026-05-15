@@ -31,6 +31,7 @@ const Navbar = () => {
     ['/', 'Home', true],
     ['/about', 'About', false],
     ['/services', 'Services', false],
+    ['/advisory', 'Advisory', false],
     ['/process', 'Process', false],
     ['/projects', 'Projects', false],
     ['/testimonials', 'Testimonials', false],

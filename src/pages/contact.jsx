@@ -33,9 +33,9 @@ const ContactPage = () => {
   return (
     <div className="page-enter">
       <Ph8
-        label="Contact Us"
-        title="Let's Start a Conversation"
-        subtitle="Book your free consultation today. Our expert team will respond within 24 hours."
+        label="Get In Touch"
+        title="Contact"
+        subtitle="Book your free consultation today. Our expert team will respond within 24 hours to help your society."
       />
 
       <section className="section-pad">

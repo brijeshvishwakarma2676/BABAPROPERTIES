@@ -25,8 +25,8 @@ const MobileCTA = () => (
 
 const Footer = () => {
   const yr = new Date().getFullYear();
-  const svcs = ['Redevelopment Planning','PMC Services','Agreement Guidance','Society Representation','Risk Management','Legal & Technical Support','Builder Evaluation','Project Monitoring'];
-  const pages = [['/','Home'],['/about','About Us'],['/services','Services'],['/process','Redevelopment Process'],['/projects','Projects'],['/testimonials','Testimonials'],['/faq','FAQs'],['/contact','Contact']];
+  const svcs = ['Redevelopment & PMC','Liaisoning','J.V. Proposals','Outright Deals','Pre-Leased Property','New Inventory','Agreement Guidance','Legal Support'];
+  const pages = [['/','Home'],['/about','About Us'],['/services','Services'],['/advisory','Property Advisory'],['/process','Redevelopment Process'],['/projects','Projects'],['/testimonials','Testimonials'],['/faq','FAQs'],['/contact','Contact']];
 
   return (
     <>
@@ -34,10 +34,10 @@ const Footer = () => {
       <footer style={{ background:'#07060400', borderTop:'1px solid rgba(200,155,60,0.14)' }}>
         <div style={{ background:'var(--bg-body)' }}>
           <div className="max-w-[1380px] mx-auto px-5 lg:px-10 pt-20 pb-8 footer-bottom-pad">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 pb-16 border-b border-white/5">
+            <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 pb-16 border-b border-white/5">
 
               {/* Brand */}
-              <div className="col-span-2 lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="col-span-3 lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
                 <div className="mb-7 flex justify-center lg:justify-start -ml-2">
                   <Logo layout="vertical" />
                 </div>
@@ -85,9 +85,9 @@ const Footer = () => {
               </div>
 
               {/* Contact */}
-              <div className="col-span-2 lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left border-t border-white/5 pt-8 lg:pt-0 lg:border-t-0">
-                <h4 className="section-label mb-6">Contact Us</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 w-full">
+              <div className="col-span-1 lg:col-span-1 flex flex-col items-start text-left border-t lg:border-t-0 border-white/5 pt-0 lg:pt-0">
+                <h4 className="section-label mb-6 text-[10px]">Contact</h4>
+                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 w-full">
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Phone</p>
                     <a href="tel:+919769423830" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23830</a>

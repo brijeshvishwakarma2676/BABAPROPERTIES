@@ -84,9 +84,9 @@ const FAQPage = () => {
   return (
     <div className="page-enter">
       <Ph7
-        label="Frequently Asked Questions"
-        title="Your Questions, Answered"
-        subtitle="Everything your society committee needs to know about redevelopment, PMC, and our services."
+        label="Common Queries"
+        title="FAQ"
+        subtitle="Everything your society committee needs to know about redevelopment, PMC, and our property services."
       />
 
       {/* FAQ List */}
