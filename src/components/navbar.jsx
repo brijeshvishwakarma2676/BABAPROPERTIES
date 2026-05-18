@@ -152,14 +152,17 @@ const Navbar = () => {
   const links = [
     ["/", "Home", true],
     ["/about", "About", false],
-    ["/services", "Services", false],
-    ["/advisory", "Advisory", false],
+    ["/services", "Redevelopment & PMC", false],
+    ["/advisory", "Property Services", false],
     ["/process", "Process", false],
     ["/projects", "Projects", false],
     ["/testimonials", "Testimonials", false],
     ["/faq", "FAQ", false],
     ["/contact", "Contact", false],
   ];
+
+  const isServicesActive = page === "/services" || page === "/advisory";
+  const desktopLinks = links.filter(([path]) => path !== "/services" && path !== "/advisory");
 
   const bar = scrolled
     ? "border-b border-[rgba(200,155,60,0.14)] shadow-[0_4px_40px_rgba(0,0,0,0.7)]"
@@ -175,7 +178,7 @@ const Navbar = () => {
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${bar}`}
         style={barStyle}
       >
-        <div className="max-w-[1380px] mx-auto px-5 lg:px-10 flex items-center justify-between h-[72px] navbar-inner">
+        <div className="max-w-[1380px] mx-auto px-5 lg:px-6 xl:px-8 2xl:px-10 flex items-center justify-between h-[72px] navbar-inner">
           {/* Logo */}
           <a
             href="#/"
@@ -188,25 +191,96 @@ const Navbar = () => {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden xl:flex items-center gap-8">
-            {links.map(([path, label, end]) => (
-              <NavLink
-                key={path}
-                to={path}
-                end={end}
-                className={({ isActive }) =>
-                  "font-inter text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 relative pb-1 " +
-                  (isActive
-                    ? "text-gold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold"
-                    : "text-white/75 hover:text-gold")
-                }
-              >
-                {label}
-              </NavLink>
+          <nav className="hidden xl:flex items-center gap-4 xl:gap-5 2xl:gap-8">
+            {desktopLinks.map(([path, label, end], index) => (
+              <React.Fragment key={path}>
+                <NavLink
+                  to={path}
+                  end={end}
+                  className={({ isActive }) =>
+                    "font-inter text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 relative pb-1 " +
+                    (isActive
+                      ? "text-gold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold"
+                      : "text-white/75 hover:text-gold")
+                  }
+                >
+                  {label}
+                </NavLink>
+
+                {/* Master Services Dropdown inserted right after 'About' (index 1) */}
+                {index === 1 && (
+                  <div className="relative group py-2">
+                    <button
+                      type="button"
+                      className={`font-inter text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 flex items-center gap-1.5 pb-1 relative bg-transparent border-0 cursor-pointer ${
+                        isServicesActive
+                          ? "text-gold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold"
+                          : "text-white/75 hover:text-gold"
+                      }`}
+                    >
+                      Services
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="10"
+                        height="10"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        className="group-hover:rotate-180 transition-transform duration-300"
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    {/* Gorgeous Glassmorphism Dropdown */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-64 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-[70]">
+                      <div
+                        className="premium-card p-2 border border-gold/14 shadow-2xl backdrop-blur-2xl"
+                        style={{ background: "var(--nav-bg-solid)" }}
+                      >
+                        {[
+                          {
+                            t: "Redevelopment & PMC",
+                            d: "Society Planning & Consultancy",
+                            path: "/services",
+                          },
+                          {
+                            t: "Property Services",
+                            d: "Joint Ventures & Transactions",
+                            path: "/advisory",
+                          },
+                        ].map((item) => {
+                          const isItemActive = page === item.path;
+                          return (
+                            <a
+                              key={item.path}
+                              href={`#${item.path}`}
+                              className="flex flex-col p-3 rounded hover:bg-gold/5 transition-all text-left no-underline group/item"
+                            >
+                              <span
+                                className={`font-cinzel text-[10px] font-bold tracking-wider transition-colors ${
+                                  isItemActive
+                                    ? "text-gold"
+                                    : "text-white group-hover/item:text-gold"
+                                }`}
+                              >
+                                {item.t}
+                              </span>
+                              <span className="font-inter text-[9px] text-white/50 tracking-wide mt-1">
+                                {item.d}
+                              </span>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </nav>
 
-          <div className="hidden xl:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-4 xl:gap-5 2xl:gap-8">
             <ClassicToggle theme={theme} toggleTheme={toggleTheme} />
             <a href="#/contact" className="btn-gold py-2.5 px-6 text-[10px] font-bold tracking-widest">
               Free Consultation

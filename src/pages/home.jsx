@@ -157,7 +157,7 @@ const HomePage = () => (
                   Get Free Consultation
                 </Lnk>
                 <a
-                  href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
+                  href="https://wa.me/918097244652?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost"
@@ -486,31 +486,109 @@ const HomePage = () => (
       </div>
     </section>
 
-    {/* ── ADVISORY PREVIEW ───────────────────────────────────────────── */}
-    <section className="section-pad">
+    {/* ── PROPERTY SERVICES & ADVISORY SHOWCASE ───────────────────────── */}
+    <section className="section-pad" style={{ borderTop: "1px solid rgba(200,155,60,0.08)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <ST
-          label="Investment & Advisory"
-          title="Property Solutions Beyond Redevelopment"
-          subtitle="Leveraging our market expertise to help you find the right property, investment, or partnership."
+          label="Main Property Verticals"
+          title="Property Services & Strategic Advisory"
+          subtitle="Comprehensive, clear-title real estate solutions backed by verified market data and legal diligence."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {[
-            { t:'Liaisoning', d:'Professional government coordination for approvals & NOCs.' },
-            { t:'J.V. Proposals', d:'Facilitating strategic land & developer partnerships.' },
-            { t:'Outright Deals', d:'Buying & selling plots, bungalows & clear-title land.' },
-            { t:'New Inventory', d:'Direct access to premium RERA projects & pre-leased assets.' },
-          ].map((a,i) => (
-            <FU key={i} delay={i*60}>
-              <div className="premium-card p-6 border border-gold/10 hover:border-gold/30 transition-all">
-                <h3 className="font-cinzel text-xs font-bold text-gold tracking-widest uppercase mb-3">{a.t}</h3>
-                <p className="font-inter text-xs text-white/70 leading-relaxed">{a.d}</p>
+            {
+              t: "Liaisoning Services",
+              id: "liaisoning",
+              d: "Approvals & NOC coordination with local municipal planning corporations.",
+              pts: ["BMC / TMC / MBMC", "NOC Coordination"],
+              img: "/uploads/liaisoning.png",
+            },
+            {
+              t: "J.V. Proposals",
+              id: "jv-proposals",
+              d: "Joint Ventures matching landowners with premium builders transparently.",
+              pts: ["Developer Matching", "Fair Profit Splits"],
+              img: "/uploads/jv.png",
+            },
+            {
+              t: "Outright Deals",
+              id: "outright-deals",
+              d: "Diligence-backed outright sale or purchase of plots, bungalows & land.",
+              pts: ["Title Verification", "Market Valuation"],
+              img: "/uploads/outright.png",
+            },
+            {
+              t: "Pre-Leased Property",
+              id: "pre-leased",
+              d: "High-yield commercial assets with active tenants & immediate cashflow.",
+              pts: ["Immediate Yields", "Grade-A Tenants"],
+              img: "/uploads/preleased.png",
+            },
+            {
+              t: "New Inventory",
+              id: "new-inventory",
+              d: "Developer-direct premium RERA flats & office spaces across MMR.",
+              pts: ["Flats & Commercial", "Exclusive Pricing"],
+              img: "/uploads/inventory.png",
+            },
+          ].map((a, i) => (
+            <FU key={a.id} delay={i * 60}>
+              <div className="premium-card overflow-hidden group flex flex-col h-full hover:border-gold/40 transition-all duration-500">
+                {/* Visual Area */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40">
+                  <img
+                    src={a.img}
+                    alt={a.t}
+                    className="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="absolute inset-0 hidden flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-black/50 to-black/85">
+                    <span className="font-cinzel text-xs font-bold text-gold/80 tracking-widest uppercase">BABA Properties</span>
+                  </div>
+                  {/* Gold framing border */}
+                  <div className="absolute inset-2 border border-gold/10 group-hover:border-gold/30 transition-colors pointer-events-none" />
+                </div>
+                
+                {/* Content Area */}
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-cinzel text-xs font-bold text-gold tracking-widest uppercase mb-3 leading-snug">
+                    {a.t}
+                  </h3>
+                  <p className="font-inter text-xs text-white/70 leading-relaxed mb-4 flex-1">
+                    {a.d}
+                  </p>
+                  
+                  {/* Highlights tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/5">
+                    {a.pts.map((pt, idx) => (
+                      <span
+                        key={idx}
+                        className="font-inter text-[9px] font-semibold text-white/55 tracking-wide bg-white/5 px-2 py-0.5 border border-white/5"
+                      >
+                        {pt}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <Lnk
+                    to={`/advisory#${a.id}`}
+                    className="mt-5 font-inter text-[10px] font-bold text-gold group-hover:text-white uppercase tracking-widest flex items-center gap-1.5 transition-colors no-underline"
+                  >
+                    View Details
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </Lnk>
+                </div>
               </div>
             </FU>
           ))}
         </div>
-        <FU className="text-center mt-10">
-          <Lnk to="/advisory" className="btn-ghost">Explore Advisory Solutions</Lnk>
+        <FU className="text-center mt-12">
+          <Lnk to="/advisory" className="btn-gold">
+            Explore All Property Services
+          </Lnk>
         </FU>
       </div>
     </section>
@@ -692,8 +770,8 @@ const HomePage = () => (
             <Lnk to="/contact" className="btn-gold w-full sm:w-auto text-center">
               Book Free Consultation
             </Lnk>
-            <a href="tel:+919769423830" className="btn-ghost w-full sm:w-auto text-center">
-              +91 97694 23830
+            <a href="tel:+918097244652" className="btn-ghost w-full sm:w-auto text-center">
+              +91 80972 44652
             </a>
           </div>
         </FU>

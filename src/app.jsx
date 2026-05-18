@@ -13,6 +13,7 @@ import TestimonialsPage from './pages/testimonials';
 import FAQPage from './pages/faq';
 import ContactPage from './pages/contact';
 import AdvisoryPage from './pages/advisory';
+import CookieConsent from './components/CookieConsent';
 
 const ScrollToTop = () => {
   const { page } = useRouter();
@@ -51,6 +52,7 @@ const App = () => (
         </Routes>
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   </HashRouter>
 );

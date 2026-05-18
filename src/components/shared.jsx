@@ -6,11 +6,35 @@ const RouterCtx = createContext({ page: '/', navigate: () => {} });
 export const HashRouter = ({ children }) => {
   const get = () => { const h = window.location.hash.slice(1); return h || '/'; };
   const [page, setPage] = useState(get);
+  
   useEffect(() => {
-    const fn = () => { setPage(get()); window.scrollTo({ top: 0, behavior: 'instant' }); };
+    const fn = () => { 
+      const current = get();
+      setPage(current); 
+      // If it doesn't contain a deep hash segment, scroll to top
+      if (!current.includes('#')) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    };
     window.addEventListener('hashchange', fn);
     return () => window.removeEventListener('hashchange', fn);
   }, []);
+
+  // Handle auto-scrolling to elements matching sub-hash fragments
+  useEffect(() => {
+    const hash = window.location.hash;
+    const parts = hash.split('#');
+    if (parts.length > 2) {
+      const anchorId = parts[2];
+      setTimeout(() => {
+        const el = document.getElementById(anchorId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 250); // Small timeout to allow DOM to finish rendering
+    }
+  }, [page]);
+
   return (
     <RouterCtx.Provider value={{ page, navigate: p => { window.location.hash = p; } }}>
       {children}
@@ -26,8 +50,9 @@ export const Routes = ({ children }) => {
   const match = arr.find(r => {
     const p = r.props.path;
     if (!p) return false;
-    if (p === '/') return page === '/' || page === '';
-    return page === p || page.startsWith(p + '/');
+    const cleanPage = page.split('#')[0];
+    if (p === '/') return cleanPage === '/' || cleanPage === '';
+    return cleanPage === p || cleanPage.startsWith(p + '/');
   });
   return match ? match.props.element : null;
 };
@@ -147,7 +172,7 @@ export const PageCTA = ({ headline = 'Ready to Start Your Redevelopment Journey?
           <p className="font-inter text-base text-white/75 my-8 leading-relaxed">{sub}</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-gold">Book Free Consultation</Link>
-            <a href="tel:+919769423830" className="btn-ghost">+91 97694 23830</a>
+            <a href="tel:+918097244652" className="btn-ghost">+91 80972 44652</a>
           </div>
         </FadeUp>
       </div>

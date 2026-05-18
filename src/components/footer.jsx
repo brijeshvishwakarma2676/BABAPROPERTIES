@@ -12,7 +12,7 @@ const MobileCTA = () => (
       Consult Now
     </Link>
     <a
-      href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
+      href="https://wa.me/918097244652?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation."
       target="_blank"
       rel="noopener noreferrer"
       className="flex-1 flex items-center justify-center gap-2 text-[#25D366] text-[10px] font-bold tracking-widest uppercase border border-[#25D366] no-underline"
@@ -90,7 +90,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 w-full">
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Phone</p>
-                    <a href="tel:+919769423830" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 97694 23830</a>
+                    <a href="tel:+918097244652" className="font-inter font-semibold text-white/90 hover:text-gold transition-colors no-underline">+91 80972 44652</a>
                   </div>
                   <div>
                     <p className="font-inter text-[10px] text-white/52 uppercase tracking-widest mb-1">Email</p>

@@ -9,26 +9,91 @@ import {
 const ContactPage = () => {
   const [form, setForm] = useState({
     name: "",
-    society: "",
-    location: "",
+    email: "",
     phone: "",
+    service: "", // redevelopment, liaisoning, jv, outright, pre-leased, new-inventory, other
+    society: "",
+    members: "",
+    plotSize: "",
+    propertyType: "",
+    budget: "",
+    location: "",
     message: "",
   });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
 
   const handle = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const setKey = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+    if (!form.service) {
+      alert("Please select a service before submitting.");
+      return;
+    }
     setSending(true);
-    setTimeout(() => {
+
+    const formData = new FormData();
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "9d2e9598-851b-4e2f-bd5b-60ae67e90805";
+    formData.append("access_key", accessKey);
+    formData.append("from_name", "BABA PROPERTIES Consultation Portal");
+    formData.append(
+      "subject",
+      `New Consultation: ${form.name} (${servicesList.find((s) => s.value === form.service)?.label})`
+    );
+
+    // Primary inputs
+    formData.append("Client Name", form.name);
+    formData.append("Phone Number", form.phone);
+    formData.append("Email Address", form.email || "Not Provided");
+    formData.append("Service Needed", servicesList.find((s) => s.value === form.service)?.label || "");
+
+    // Dynamic dynamic fields
+    if (form.service === "redevelopment") {
+      formData.append("Society Name", form.society);
+      formData.append("Total Members", form.members);
+      if (form.plotSize) formData.append("Approx Plot Area", form.plotSize);
+    } else if (["jv", "outright", "pre-leased", "new-inventory"].includes(form.service)) {
+      formData.append("Property Category", form.propertyType);
+      formData.append("Estimated Budget / Deal Value", form.budget);
+    }
+
+    formData.append("Location / Area", form.location);
+    formData.append("Additional Message", form.message || "No additional message.");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        alert(data.message || "Failed to submit request. Please try again.");
+      }
+    } catch (err) {
+      alert("Network error. Please verify your internet connection and try again.");
+    } finally {
       setSending(false);
-      setSent(true);
-    }, 1500);
+    }
   };
 
-  const inputCls = `w-full bg-transparent border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm text-white/95 placeholder-white/25 focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300`;
+  const servicesList = [
+    { value: "redevelopment", label: "Redevelopment & PMC Consultancy" },
+    { value: "liaisoning", label: "Liaisoning & Government Approvals" },
+    { value: "jv", label: "J.V. Proposal (Joint Venture)" },
+    { value: "outright", label: "Outright Land / Plot Deals" },
+    { value: "pre-leased", label: "Pre-Leased Property Investment" },
+    { value: "new-inventory", label: "New Inventory (Flats & Commercial)" },
+    { value: "other", label: "General Property Query" }
+  ];
+
+  const labelCls = "font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2";
+  const inputCls = "w-full bg-transparent border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm text-white/95 placeholder-white/25 focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300";
+  const selectCls = "w-full bg-[var(--nav-bg-solid)] border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm text-white/95 focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300 appearance-none";
 
   return (
     <div className="page-enter">
@@ -51,7 +116,7 @@ const ContactPage = () => {
                 <Gr8 className="mb-8" />
 
                 {sent ? (
-                  <div className="text-center py-12">
+                  <div className="text-center py-8">
                     <div
                       className="w-16 h-16 border border-gold/40 flex items-center justify-center mx-auto mb-6"
                       style={{ background: "rgba(200,155,60,0.06)" }}
@@ -67,21 +132,89 @@ const ContactPage = () => {
                         <path d="M20 6L9 17l-5-5" />
                       </svg>
                     </div>
-                    <h3 className="font-cinzel text-xl font-bold text-white mb-3">
-                      Message Received!
+                    <h3 className="font-cinzel text-xl font-bold text-white mb-2">
+                      Consultation Booked!
                     </h3>
-                    <p className="font-inter text-sm text-white/70 leading-relaxed max-w-sm mx-auto">
-                      Thank you for reaching out. Virendra Vishwakarma will
-                      personally get back to you within 24 hours.
+                    <p className="font-inter text-xs text-white/60 mb-6 max-w-sm mx-auto">
+                      Thank you, <strong className="text-white">{form.name}</strong>. Virendra Vishwakarma will personally contact you at <strong className="text-gold">{form.phone}</strong> within 24 hours.
                     </p>
+
+                    {/* Receipt Block */}
+                    <div 
+                      className="text-left border border-gold/15 p-6 max-w-md mx-auto space-y-3 font-inter text-xs rounded"
+                      style={{ background: "rgba(255,255,255,0.02)" }}
+                    >
+                      <p className="font-cinzel text-[10px] font-bold text-gold tracking-widest uppercase pb-2 border-b border-white/5 mb-3">
+                        Request Details Summary
+                      </p>
+                      
+                      <div className="flex justify-between">
+                        <span className="text-white/55">Service Requested:</span>
+                        <span className="text-white font-semibold text-right">
+                          {servicesList.find(s => s.value === form.service)?.label}
+                        </span>
+                      </div>
+
+                      {form.email && (
+                        <div className="flex justify-between">
+                          <span className="text-white/55">Email:</span>
+                          <span className="text-white text-right">{form.email}</span>
+                        </div>
+                      )}
+
+                      {form.service === "redevelopment" && (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-white/55">Society Name:</span>
+                            <span className="text-white font-semibold text-right">{form.society}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-white/55">Total Members:</span>
+                            <span className="text-white text-right">{form.members}</span>
+                          </div>
+                          {form.plotSize && (
+                            <div className="flex justify-between">
+                              <span className="text-white/55">Approx. Plot Area:</span>
+                              <span className="text-white text-right">{form.plotSize}</span>
+                            </div>
+                          )}
+                        </>
+                      )}
+
+                      {["jv", "outright", "pre-leased", "new-inventory"].includes(form.service) && (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-white/55">Property Type:</span>
+                            <span className="text-white font-semibold text-right">{form.propertyType}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-white/55">Estimated Budget:</span>
+                            <span className="text-white text-right">{form.budget}</span>
+                          </div>
+                        </>
+                      )}
+
+                      <div className="flex justify-between">
+                        <span className="text-white/55">Location:</span>
+                        <span className="text-white text-right">{form.location}</span>
+                      </div>
+
+                      {form.message && (
+                        <div className="pt-3 border-t border-white/5 mt-2">
+                          <span className="text-white/55 block mb-1">Your Message:</span>
+                          <p className="text-white/80 leading-relaxed italic bg-black/20 p-3 border border-white/5 rounded">
+                            "{form.message}"
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ) : (
-                  <form onSubmit={submit} className="space-y-4">
+                  <form onSubmit={submit} className="space-y-5">
+                    {/* Always visible base fields */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2">
-                          Your Name *
-                        </label>
+                        <label className={labelCls}>Your Name *</label>
                         <input
                           required
                           value={form.name}
@@ -91,35 +224,7 @@ const ContactPage = () => {
                         />
                       </div>
                       <div>
-                        <label className="font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2">
-                          Society Name *
-                        </label>
-                        <input
-                          required
-                          value={form.society}
-                          onChange={handle("society")}
-                          placeholder="e.g. Shiv Sai CHS"
-                          className={inputCls}
-                        />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2">
-                          Location *
-                        </label>
-                        <input
-                          required
-                          value={form.location}
-                          onChange={handle("location")}
-                          placeholder="City / Area"
-                          className={inputCls}
-                        />
-                      </div>
-                      <div>
-                        <label className="font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2">
-                          Phone Number *
-                        </label>
+                        <label className={labelCls}>Phone Number *</label>
                         <input
                           required
                           type="tel"
@@ -130,19 +235,237 @@ const ContactPage = () => {
                         />
                       </div>
                     </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className={labelCls}>Email Address</label>
+                        <input
+                          type="email"
+                          value={form.email}
+                          onChange={handle("email")}
+                          placeholder="email@example.com"
+                          className={inputCls}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Service Needed *</label>
+                        {/* Custom Select Dropdown */}
+                        <div className="relative">
+                          <button
+                            type="button"
+                            onClick={() => setServiceOpen(!serviceOpen)}
+                            className={`${inputCls} flex items-center justify-between text-left cursor-pointer`}
+                          >
+                            <span className={form.service ? "text-white" : "text-white/25"}>
+                              {servicesList.find((s) => s.value === form.service)?.label || "Select Service"}
+                            </span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              width="16"
+                              height="16"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              className={`text-gold transition-transform duration-300 ${
+                                serviceOpen ? "rotate-180" : ""
+                              }`}
+                            >
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </button>
+
+                          {serviceOpen && (
+                            <>
+                              <div className="fixed inset-0 z-40" onClick={() => setServiceOpen(false)} />
+                              <div
+                                className="absolute left-0 right-0 top-full mt-2 z-50 premium-card p-1 border border-gold/22 shadow-2xl max-h-60 overflow-y-auto"
+                                style={{ background: "var(--nav-bg-solid)", backdropFilter: "blur(16px)" }}
+                              >
+                                {servicesList.map((s) => (
+                                  <button
+                                    key={s.value}
+                                    type="button"
+                                    onClick={() => {
+                                      setKey("service", s.value);
+                                      setServiceOpen(false);
+                                    }}
+                                    className={`w-full text-left font-inter text-xs px-4 py-3 hover:bg-gold/5 transition-colors cursor-pointer ${
+                                      form.service === s.value ? "text-gold bg-gold/5 font-semibold" : "text-white/80 hover:text-white"
+                                    }`}
+                                  >
+                                    {s.label}
+                                  </button>
+                                ))}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Redevelopment dynamic block */}
+                    {form.service === "redevelopment" && (
+                      <div className="p-5 border border-gold/10 bg-gold/5 space-y-4 rounded page-enter duration-500">
+                        <p className="font-cinzel text-[10px] font-bold text-gold tracking-widest uppercase mb-1">
+                          Redevelopment & Society Details
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className={labelCls}>Society Name *</label>
+                            <input
+                              required
+                              value={form.society}
+                              onChange={handle("society")}
+                              placeholder="e.g. Shiv Sai CHS"
+                              className={inputCls}
+                            />
+                          </div>
+                          <div>
+                            <label className={labelCls}>Total Members *</label>
+                            <div className="relative">
+                              <select
+                                required
+                                value={form.members}
+                                onChange={(e) => setKey("members", e.target.value)}
+                                className={selectCls}
+                              >
+                                <option value="" className="bg-[#121212] text-white/40">Select Member Count</option>
+                                <option value="Under 15" className="bg-[#121212]">Under 15 members</option>
+                                <option value="15 to 30" className="bg-[#121212]">15 to 30 members</option>
+                                <option value="30 to 60" className="bg-[#121212]">30 to 60 members</option>
+                                <option value="60 to 100" className="bg-[#121212]">60 to 100 members</option>
+                                <option value="100+" className="bg-[#121212]">100+ members</option>
+                              </select>
+                              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M6 9l6 6 6-6" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className={labelCls}>Location *</label>
+                            <input
+                              required
+                              value={form.location}
+                              onChange={handle("location")}
+                              placeholder="e.g. Borivali West, Mumbai"
+                              className={inputCls}
+                            />
+                          </div>
+                          <div>
+                            <label className={labelCls}>Approx. Plot Area (Optional)</label>
+                            <input
+                              value={form.plotSize}
+                              onChange={handle("plotSize")}
+                              placeholder="e.g. 1500 sq. meters"
+                              className={inputCls}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Transaction / Advisory property dynamic block */}
+                    {["jv", "outright", "pre-leased", "new-inventory"].includes(form.service) && (
+                      <div className="p-5 border border-gold/10 bg-gold/5 space-y-4 rounded page-enter duration-500">
+                        <p className="font-cinzel text-[10px] font-bold text-gold tracking-widest uppercase mb-1">
+                          Property Details & Budget
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className={labelCls}>Property Category *</label>
+                            <div className="relative">
+                              <select
+                                required
+                                value={form.propertyType}
+                                onChange={(e) => setKey("propertyType", e.target.value)}
+                                className={selectCls}
+                              >
+                                <option value="" className="bg-[#121212] text-white/40">Select Category</option>
+                                <option value="Land Parcel / Plot" className="bg-[#121212]">Land Parcel / Plot</option>
+                                <option value="Residential Flat / Apartment" className="bg-[#121212]">Residential Flat / Apartment</option>
+                                <option value="Commercial Office Space" className="bg-[#121212]">Commercial Office Space</option>
+                                <option value="Retail Shop / Showroom" className="bg-[#121212]">Retail Shop / Showroom</option>
+                                <option value="Standalone Building / Bungalow" className="bg-[#121212]">Standalone Building / Bungalow</option>
+                              </select>
+                              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M6 9l6 6 6-6" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <label className={labelCls}>Estimated Budget / Deal Value *</label>
+                            <div className="relative">
+                              <select
+                                required
+                                value={form.budget}
+                                onChange={(e) => setKey("budget", e.target.value)}
+                                className={selectCls}
+                              >
+                                <option value="" className="bg-[#121212] text-white/40">Select Budget Range</option>
+                                <option value="Under 2 Crores" className="bg-[#121212]">Under 2 Crores</option>
+                                <option value="2 to 5 Crores" className="bg-[#121212]">2 to 5 Crores</option>
+                                <option value="5 to 10 Crores" className="bg-[#121212]">5 to 10 Crores</option>
+                                <option value="10 to 25 Crores" className="bg-[#121212]">10 to 25 Crores</option>
+                                <option value="25 Crores+" className="bg-[#121212]">25 Crores+</option>
+                              </select>
+                              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M6 9l6 6 6-6" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <label className={labelCls}>Preferred Location / Area *</label>
+                          <input
+                            required
+                            value={form.location}
+                            onChange={handle("location")}
+                            placeholder="e.g. Mira Road, Thane, Andheri West"
+                            className={inputCls}
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Liaisoning or General Query Block */}
+                    {["liaisoning", "other"].includes(form.service) && (
+                      <div className="p-5 border border-gold/10 bg-gold/5 space-y-4 rounded page-enter duration-500">
+                        <p className="font-cinzel text-[10px] font-bold text-gold tracking-widest uppercase mb-1">
+                          Project Details
+                        </p>
+                        <div>
+                          <label className={labelCls}>Project / Property Location *</label>
+                          <input
+                            required
+                            value={form.location}
+                            onChange={handle("location")}
+                            placeholder="e.g. Dahisar, BMC Limits"
+                            className={inputCls}
+                          />
+                        </div>
+                      </div>
+                    )}
+
                     <div>
-                      <label className="font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2">
-                        Your Message
-                      </label>
+                      <label className={labelCls}>Additional Message</label>
                       <textarea
                         value={form.message}
                         onChange={handle("message")}
-                        placeholder="Tell us about your society's redevelopment situation, questions, or concerns..."
-                        rows={5}
+                        placeholder="Tell us more about your requirements, timeline, or current situation..."
+                        rows={4}
                         className={inputCls}
-                        style={{ resize: "vertical", minHeight: 120 }}
+                        style={{ resize: "vertical", minHeight: 100 }}
                       />
                     </div>
+
                     <button
                       type="submit"
                       disabled={sending}
@@ -162,7 +485,7 @@ const ContactPage = () => {
                           >
                             <path d="M21 12a9 9 0 11-6.219-8.56" />
                           </svg>
-                          Sending...
+                          Processing Request...
                         </span>
                       ) : (
                         <span className="flex items-center gap-2">
@@ -176,13 +499,12 @@ const ContactPage = () => {
                           >
                             <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
                           </svg>
-                          Send Message
+                          Book Free Consultation
                         </span>
                       )}
                     </button>
                     <p className="font-inter text-xs text-white/55 text-center mt-2">
-                      We respond within 24 hours. Your information is completely
-                      confidential.
+                      We respond within 24 hours. Your information is 100% secure.
                     </p>
                   </form>
                 )}
@@ -213,7 +535,7 @@ const ContactPage = () => {
                         Phone
                       </p>
                       <div className="flex flex-col gap-1">
-                        <a href="tel:+919769423830" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 97694 23830</a>
+                        <a href="tel:+918097244652" className="font-inter font-semibold text-white hover:text-gold transition-colors no-underline leading-none">+91 80972 44652</a>
                       </div>
                     </div>
                   </div>
@@ -273,7 +595,7 @@ const ContactPage = () => {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/919769423830?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation%20for%20my%20society."
+                href="https://wa.me/918097244652?text=Hello%20BABA%20Properties!%20I%20want%20a%20free%20redevelopment%20consultation%20for%20my%20society."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block premium-card p-6 border border-[#25D366]/18 hover:border-[#25D366]/45 transition-colors group no-underline"
