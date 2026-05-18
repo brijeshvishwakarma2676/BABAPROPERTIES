@@ -231,3 +231,44 @@ body.light-theme .section-divider::after {
 @media (max-width: 767px) {
   .floating-wa-btn { bottom: 150px; }
 }
+
+/* ── Form Inputs & Select Theme Adaptation ── */
+.form-input-themed {
+  color: rgba(255, 255, 255, 0.95);
+}
+.form-input-themed::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+body.light-theme .form-input-themed {
+  color: #18181B !important;
+}
+body.light-theme .form-input-themed::placeholder {
+  color: rgba(24, 24, 27, 0.45) !important;
+}
+
+/* Native Dropdown Options Theme Adaptation */
+select option {
+  background-color: #1C1917 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+body.light-theme select option {
+  background-color: #FFFFFF !important;
+  color: #18181B !important;
+}
+
+/* Custom Dropdown Option Theme Adaptation */
+.dropdown-option-themed {
+  color: rgba(255, 255, 255, 0.8);
+}
+.dropdown-option-themed:hover {
+  color: #FFFFFF !important;
+}
+body.light-theme .dropdown-option-themed {
+  color: rgba(24, 24, 27, 0.75) !important;
+}
+body.light-theme .dropdown-option-themed:hover {
+  color: #18181B !important;
+  background-color: rgba(200, 155, 60, 0.08) !important;
+}
+

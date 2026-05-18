@@ -92,8 +92,8 @@ const ContactPage = () => {
   ];
 
   const labelCls = "font-inter text-[10px] text-white/65 uppercase tracking-widest block mb-2";
-  const inputCls = "w-full bg-transparent border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm text-white/95 placeholder-white/25 focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300";
-  const selectCls = "w-full bg-[var(--nav-bg-solid)] border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm text-white/95 focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300 appearance-none";
+  const inputCls = "w-full bg-transparent border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm form-input-themed focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300";
+  const selectCls = "w-full bg-[var(--nav-bg-solid)] border border-[rgba(200,155,60,0.18)] px-5 py-4 font-inter text-sm form-input-themed focus:border-[rgba(200,155,60,0.55)] focus:outline-none transition-colors duration-300 appearance-none";
 
   return (
     <div className="page-enter">
@@ -256,7 +256,7 @@ const ContactPage = () => {
                             onClick={() => setServiceOpen(!serviceOpen)}
                             className={`${inputCls} flex items-center justify-between text-left cursor-pointer`}
                           >
-                            <span className={form.service ? "text-white" : "text-white/25"}>
+                            <span className={form.service ? "form-input-themed" : "form-input-themed opacity-40"}>
                               {servicesList.find((s) => s.value === form.service)?.label || "Select Service"}
                             </span>
                             <svg
@@ -289,8 +289,8 @@ const ContactPage = () => {
                                       setKey("service", s.value);
                                       setServiceOpen(false);
                                     }}
-                                    className={`w-full text-left font-inter text-xs px-4 py-3 hover:bg-gold/5 transition-colors cursor-pointer ${
-                                      form.service === s.value ? "text-gold bg-gold/5 font-semibold" : "text-white/80 hover:text-white"
+                                    className={`w-full text-left font-inter text-xs px-4 py-3 hover:bg-gold/5 transition-colors cursor-pointer dropdown-option-themed ${
+                                      form.service === s.value ? "text-gold bg-gold/5 font-semibold" : ""
                                     }`}
                                   >
                                     {s.label}
