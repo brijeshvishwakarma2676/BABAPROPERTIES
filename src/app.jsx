@@ -13,11 +13,37 @@ import TestimonialsPage from './pages/testimonials';
 import FAQPage from './pages/faq';
 import ContactPage from './pages/contact';
 import AdvisoryPage from './pages/advisory';
+import ServiceLiaisoningPage from './pages/service-liaisoning';
+import ServiceJvPage from './pages/service-jv';
+import ServiceOutrightPage from './pages/service-outright';
+import ServicePreleasedPage from './pages/service-preleased';
+import ServiceInventoryPage from './pages/service-inventory';
 import CookieConsent from './components/CookieConsent';
 
 const ScrollToTop = () => {
   const { page } = useRouter();
   React.useEffect(() => {
+    if (page === '/' || page === '') {
+      const savedY = sessionStorage.getItem('home_scroll_y');
+      if (savedY) {
+        const y = parseInt(savedY, 10);
+        setTimeout(() => {
+          window.scrollTo({ top: y, behavior: 'instant' });
+        }, 50);
+        sessionStorage.removeItem('home_scroll_y');
+        return;
+      }
+    } else if (page === '/advisory') {
+      const savedY = sessionStorage.getItem('advisory_scroll_y');
+      if (savedY) {
+        const y = parseInt(savedY, 10);
+        setTimeout(() => {
+          window.scrollTo({ top: y, behavior: 'instant' });
+        }, 50);
+        sessionStorage.removeItem('advisory_scroll_y');
+        return;
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [page]);
   return null;
@@ -41,6 +67,11 @@ const App = () => (
         <Routes>
           <Route path="/"             element={<HomePage />} />
           <Route path="/about"        element={<AboutPage />} />
+          <Route path="/services/liaisoning" element={<ServiceLiaisoningPage />} />
+          <Route path="/services/jv-proposals" element={<ServiceJvPage />} />
+          <Route path="/services/outright-deals" element={<ServiceOutrightPage />} />
+          <Route path="/services/pre-leased" element={<ServicePreleasedPage />} />
+          <Route path="/services/new-inventory" element={<ServiceInventoryPage />} />
           <Route path="/services"     element={<ServicesPage />} />
           <Route path="/advisory"     element={<AdvisoryPage />} />
           <Route path="/process"      element={<ProcessPage />} />

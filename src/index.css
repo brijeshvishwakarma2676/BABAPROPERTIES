@@ -272,3 +272,76 @@ body.light-theme .dropdown-option-themed:hover {
   background-color: rgba(200, 155, 60, 0.08) !important;
 }
 
+/* Gold Link Hover Theme Adaptation (Prevents invisible white text on hover in light mode) */
+.gold-link-hover-themed {
+  color: #C89B3C !important;
+  transition: color 0.3s ease;
+}
+.gold-link-hover-themed:hover,
+.group:hover .gold-link-hover-themed,
+.group\/link:hover .gold-link-hover-themed {
+  color: #FFFFFF !important;
+}
+body.light-theme .gold-link-hover-themed:hover,
+body.light-theme .group:hover .gold-link-hover-themed,
+body.light-theme .group\/link:hover .gold-link-hover-themed {
+  color: #18181B !important;
+}
+
+/* Hide scrollbar completely for horizontal swipe carousel on mobile */
+.custom-scrollbar-horizontal {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.custom-scrollbar-horizontal::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Perfect centering math for first card and subsequent active snaps on mobile screens */
+.carousel-mobile-centered {
+  padding-left: calc(50vw - 145px) !important;
+  padding-right: calc(50vw - 145px) !important;
+}
+
+@media (min-width: 640px) {
+  .carousel-mobile-centered {
+    padding-left: calc(50vw - 162.5px) !important;
+    padding-right: calc(50vw - 162.5px) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-mobile-centered {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Premium mobile carousel 3D scaling card effect */
+.mobile-snap-card {
+  transform: scale(0.91);
+  opacity: 0.65;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
+}
+
+.mobile-snap-card.active-card {
+  transform: scale(1.03);
+  opacity: 1;
+  border-color: rgba(200, 155, 60, 0.35) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+body.light-theme .mobile-snap-card.active-card {
+  box-shadow: 0 10px 30px rgba(24, 24, 27, 0.06);
+}
+
+@media (min-width: 768px) {
+  .mobile-snap-card {
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
+}

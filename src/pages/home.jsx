@@ -6,6 +6,7 @@ import {
   GoldRule as GR,
   Link as Lnk,
 } from "../components/shared";
+import { SERVICES_DATA } from "../data/servicesData";
 
 const SVCS = [
   {
@@ -81,8 +82,34 @@ const TESTS = [
   },
 ];
 
-const HomePage = () => (
-  <div className="page-enter">
+const HomePage = () => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const containerRef = React.useRef(null);
+
+  const handleScroll = () => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const children = container.children;
+    if (!children || children.length === 0) return;
+    
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const distance = Math.abs(containerCenter - childCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = i;
+      }
+    }
+    setActiveIndex(closestIndex);
+  };
+
+  return (
+    <div className="page-enter">
     {/* ── HERO ──────────────────────────────────────────────────────────── */}
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div
@@ -487,53 +514,21 @@ const HomePage = () => (
     </section>
 
     {/* ── PROPERTY SERVICES & ADVISORY SHOWCASE ───────────────────────── */}
-    <section className="section-pad" style={{ borderTop: "1px solid rgba(200,155,60,0.08)" }}>
+    <section className="section-pad overflow-hidden" style={{ borderTop: "1px solid rgba(200,155,60,0.08)" }}>
       <div className="max-w-[1380px] mx-auto px-5 lg:px-10">
         <ST
           label="Main Property Verticals"
           title="Property Services & Strategic Advisory"
           subtitle="Comprehensive, clear-title real estate solutions backed by verified market data and legal diligence."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {[
-            {
-              t: "Liaisoning Services",
-              id: "liaisoning",
-              d: "Approvals & NOC coordination with local municipal planning corporations.",
-              pts: ["BMC / TMC / MBMC", "NOC Coordination"],
-              img: "/uploads/liaisoning.png",
-            },
-            {
-              t: "J.V. Proposals",
-              id: "jv-proposals",
-              d: "Joint Ventures matching landowners with premium builders transparently.",
-              pts: ["Developer Matching", "Fair Profit Splits"],
-              img: "/uploads/jv.png",
-            },
-            {
-              t: "Outright Deals",
-              id: "outright-deals",
-              d: "Diligence-backed outright sale or purchase of plots, bungalows & land.",
-              pts: ["Title Verification", "Market Valuation"],
-              img: "/uploads/outright.png",
-            },
-            {
-              t: "Pre-Leased Property",
-              id: "pre-leased",
-              d: "High-yield commercial assets with active tenants & immediate cashflow.",
-              pts: ["Immediate Yields", "Grade-A Tenants"],
-              img: "/uploads/preleased.png",
-            },
-            {
-              t: "New Inventory",
-              id: "new-inventory",
-              d: "Developer-direct premium RERA flats & office spaces across MMR.",
-              pts: ["Flats & Commercial", "Exclusive Pricing"],
-              img: "/uploads/inventory.png",
-            },
-          ].map((a, i) => (
-            <FU key={a.id} delay={i * 60}>
-              <div className="premium-card overflow-hidden group flex flex-col h-full hover:border-gold/40 transition-all duration-500">
+        <div 
+          ref={containerRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 md:overflow-x-visible custom-scrollbar-horizontal carousel-mobile-centered"
+        >
+          {SERVICES_DATA.map((a, i) => (
+            <FU key={a.id} delay={i * 60} className="snap-center shrink-0 w-[290px] sm:w-[325px] md:w-auto md:shrink md:snap-align-none flex flex-col py-4">
+              <div className={`premium-card overflow-hidden group flex flex-col h-full hover:border-gold/40 transition-all duration-500 w-full mobile-snap-card ${activeIndex === i ? 'active-card' : ''}`}>
                 {/* Visual Area */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40">
                   <img
@@ -574,8 +569,9 @@ const HomePage = () => (
                   </div>
                   
                   <Lnk
-                    to={`/advisory#${a.id}`}
-                    className="mt-5 font-inter text-[10px] font-bold text-gold group-hover:text-white uppercase tracking-widest flex items-center gap-1.5 transition-colors no-underline"
+                    to={`/services/${a.id}`}
+                    onClick={() => sessionStorage.setItem('home_scroll_y', window.scrollY.toString())}
+                    className="mt-5 font-inter text-[10px] font-bold gold-link-hover-themed uppercase tracking-widest flex items-center gap-1.5 no-underline"
                   >
                     View Details
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -584,6 +580,34 @@ const HomePage = () => (
               </div>
             </FU>
           ))}
+        </div>
+
+        {/* Mobile Swipe Indicators: . _ . */}
+        <div className="flex md:hidden items-center justify-center gap-3 mt-6">
+          {SERVICES_DATA.map((_, idx) => {
+            const isActive = activeIndex === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => {
+                  if (containerRef.current) {
+                    const container = containerRef.current;
+                    const children = container.children;
+                    if (children && children[idx]) {
+                      children[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                  }
+                }}
+                className={`transition-all duration-300 border-0 p-0 cursor-pointer ${
+                  isActive 
+                    ? 'w-6 h-[5px] rounded-full bg-gold' 
+                    : 'w-2 h-2 rounded-full bg-white/20 hover:bg-white/40'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            );
+          })}
         </div>
         <FU className="text-center mt-12">
           <Lnk to="/advisory" className="btn-gold">
@@ -777,9 +801,8 @@ const HomePage = () => (
         </FU>
       </div>
     </section>
-
-
   </div>
-);
+  );
+};
 
 export default HomePage;

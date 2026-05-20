@@ -27,6 +27,17 @@ const ContactPage = () => {
   const handle = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
   const setKey = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
+  React.useEffect(() => {
+    const hash = window.location.hash;
+    const parts = hash.split("#");
+    if (parts.length > 2) {
+      const selectedService = parts[2];
+      if (["redevelopment", "liaisoning", "jv", "outright", "pre-leased", "new-inventory"].includes(selectedService)) {
+        setForm((f) => ({ ...f, service: selectedService }));
+      }
+    }
+  }, []);
+
   const submit = async (e) => {
     e.preventDefault();
     if (!form.service) {

@@ -73,6 +73,18 @@ const AdvisoryPage = () => (
                       </div>
                     ))}
                   </div>
+                  <div className="mt-8">
+                    <a 
+                      href={`#/services/${s.id}`} 
+                      onClick={() => sessionStorage.setItem('advisory_scroll_y', window.scrollY.toString())}
+                      className="font-inter text-[10px] font-bold gold-link-hover-themed uppercase tracking-widest flex items-center gap-2 no-underline group/link"
+                    >
+                      Explore Detailed Service Roadmap
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover/link:translate-x-1 transition-transform">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
                 
                 {/* Image / Visual */}

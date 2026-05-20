@@ -25,7 +25,16 @@ const MobileCTA = () => (
 
 const Footer = () => {
   const yr = new Date().getFullYear();
-  const svcs = ['Redevelopment & PMC','Liaisoning','J.V. Proposals','Outright Deals','Pre-Leased Property','New Inventory','Agreement Guidance','Legal Support'];
+  const svcs = [
+    { t: 'Redevelopment & PMC', p: '/services' },
+    { t: 'Liaisoning', p: '/services/liaisoning' },
+    { t: 'J.V. Proposals', p: '/services/jv-proposals' },
+    { t: 'Outright Deals', p: '/services/outright-deals' },
+    { t: 'Pre-Leased Property', p: '/services/pre-leased' },
+    { t: 'New Inventory', p: '/services/new-inventory' },
+    { t: 'Agreement Guidance', p: '/services' },
+    { t: 'Legal Support', p: '/services' }
+  ];
   const pages = [['/','Home'],['/about','About Us'],['/services','Services'],['/advisory','Property Advisory'],['/process','Redevelopment Process'],['/projects','Projects'],['/testimonials','Testimonials'],['/faq','FAQs'],['/contact','Contact']];
 
   return (
@@ -59,10 +68,10 @@ const Footer = () => {
                 <h4 className="section-label mb-6 text-[10px]">Services</h4>
                 <ul className="space-y-3">
                   {svcs.map(s => (
-                    <li key={s}>
-                      <Link to="/services" className="font-inter text-[11px] text-white/68 hover:text-gold transition-colors duration-300 flex items-center gap-2 no-underline">
+                    <li key={s.t}>
+                      <Link to={s.p} className="font-inter text-[11px] text-white/68 hover:text-gold transition-colors duration-300 flex items-center gap-2 no-underline">
                         <span style={{ width:3, height:3, background:'rgba(200,155,60,0.5)', flexShrink:0, display:'inline-block' }} />
-                        {s}
+                        {s.t}
                       </Link>
                     </li>
                   ))}
